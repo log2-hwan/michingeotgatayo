@@ -7,8 +7,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script>
-			var c = new webkitAudioContext(), buf;
+			var c, buf;
 			window.onload = function() {
+				try { c = new webkitAudioContext(); } catch(e) {}
 				var xhr = new XMLHttpRequest();
 				xhr.responseType = 'arraybuffer';
 				xhr.open('GET','mi.wav',true);
@@ -37,10 +38,12 @@
 				setTimeout(function() {
 					mi.css('-webkit-transform','scale3d('+scale+','+scale+',1) translate3d('+x+'px,'+y+'px,0px) rotateZ('+rotate+'deg)');
 				},100);
-				var s = c.createBufferSource();
-				s.buffer = buf;
-				s.connect(c.destination);
-				s.noteOn(0);
+				try {
+					var s = c.createBufferSource();
+					s.buffer = buf;
+					s.connect(c.destination);
+					s.noteOn(0);
+				} catch(e) {}
 				
 				return e.preventDefault();
 			};
