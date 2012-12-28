@@ -9,14 +9,15 @@
 		<script>
 			var c, buf;
 			window.onload = function() {
-				try { c = new webkitAudioContext(); } catch(e) {}
-				var xhr = new XMLHttpRequest();
-				xhr.responseType = 'arraybuffer';
-				xhr.open('GET','mi.wav',true);
-				xhr.onload = function() {
-					buf = c.createBuffer(xhr.response,false);
-				};
-				xhr.send();
+				try { c = new webkitAudioContext(); 
+					var xhr = new XMLHttpRequest();
+					xhr.responseType = 'arraybuffer';
+					xhr.open('GET','mi.wav',true);
+					xhr.onload = function() {
+						buf = c.createBuffer(xhr.response,false);
+					};
+					xhr.send();
+				} catch(e) {}
 			};
 			//window.ontouchmove = function(e) { e.preventDefault(); };
 			window.ontouchstart = window.ontouchmove = window.onkeydown = window.onmousedown = window.onmousemove = mi;
