@@ -34,10 +34,12 @@
 				var rotate = Math.random()*180+45;
 				mi.css('margin-top',-mi.height());
 				mi.css('margin-left',-mi.width());
+				mi.css('transform', 'scale3d(1,1,1) translate3d(0px,0px,0px) rotateZ(0deg)');
 				mi.css('-webkit-transform','scale3d(1,1,1) translate3d(0px,0px,0px) rotateZ(0deg)');
 				mi.css('-moz-transform','scale3d(1,1,1) translate3d(0px,0px,0px) rotateZ(0deg)');
 				mi.appendTo('body');
 				setTimeout(function() {
+					mi.css('transform','scale3d('+scale+','+scale+',1) translate3d('+x+'px,'+y+'px,0px) rotateZ('+rotate+'deg)');
 					mi.css('-webkit-transform','scale3d('+scale+','+scale+',1) translate3d('+x+'px,'+y+'px,0px) rotateZ('+rotate+'deg)');
 					mi.css('-moz-transform','scale3d('+scale+','+scale+',1) translate3d('+x+'px,'+y+'px,0px) rotateZ('+rotate+'deg)');
 				},100);
